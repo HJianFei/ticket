@@ -114,21 +114,22 @@ public class OrderFragment extends Fragment implements View.OnClickListener, Dat
                     });
                     builder.create().show();
                     return;
+                } else {
+                    String start = start_.getText().toString();
+                    String end = end_.getText().toString();
+                    String trains = train.getText().toString();
+                    String names = userInfo.getObjectByKey("username").toString();
+                    String order_id = c_order_num.getText().toString();
+                    Intent intent = new Intent(mContext, MyOrderActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("start", start);
+                    bundle.putString("end", end);
+                    bundle.putString("trains", trains);
+                    bundle.putString("names", names);
+                    bundle.putString("order_id", order_id);
+                    intent.putExtra("data", bundle);
+                    startActivity(intent);
                 }
-                String start = start_.getText().toString();
-                String end = end_.getText().toString();
-                String trains = train.getText().toString();
-                String names = c_name.getText().toString();
-                String order_id = c_order_num.getText().toString();
-                Intent intent = new Intent(mContext, MyOrderActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("start", start);
-                bundle.putString("end", end);
-                bundle.putString("trains", trains);
-                bundle.putString("names", names);
-                bundle.putString("order_id", order_id);
-                intent.putExtra("data", bundle);
-                startActivity(intent);
                 break;
 
         }

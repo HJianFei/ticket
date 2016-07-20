@@ -26,7 +26,6 @@ import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -65,12 +64,13 @@ public class TicketBuyActivity extends AppCompatActivity implements View.OnClick
     };
     private String username1;
     private String user_id_cart;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_buy);
-        Bundle bundle = getIntent().getBundleExtra("data");
+        bundle = getIntent().getBundleExtra("data");
         resultBean = (Trains.ResultBean) bundle.get("resultBean");
         resultMoney = (TicketMoney.ResultMoney) bundle.get("resultMoney");
         userInfo = BmobUser.getCurrentUser(MyUser.class);
@@ -89,7 +89,7 @@ public class TicketBuyActivity extends AppCompatActivity implements View.OnClick
 
     private void initData() {
         progressDialog = new LovelyProgressDialog(TicketBuyActivity.this);
-        progressDialog.setMessage("正在查询,请稍后。。。");
+        progressDialog.setTitle("正在查询,请稍后。。。");
         progressDialog.setTopColorRes(R.color.teal);
         progressDialog.setCancelable(true);
         progressDialog.show();
@@ -149,7 +149,7 @@ public class TicketBuyActivity extends AppCompatActivity implements View.OnClick
         two_ticket.setOnClickListener(this);
         yz_ticket.setOnClickListener(this);
         wz_ticket.setOnClickListener(this);
-        date.setText(formatter.format(new Date()));
+        date.setText(bundle.getString("date"));
         from.setText(resultBean.getFrom_station_name());
         to.setText(resultBean.getTo_station_name());
         train_num.setText(resultBean.getTrain_no());
@@ -194,7 +194,7 @@ public class TicketBuyActivity extends AppCompatActivity implements View.OnClick
         order.setUser_name(username1);
         order.setUser_id(user_id_cart);
 
-        order.setDate(formatter.format(new Date()));
+        order.setDate(bundle.getString("date"));
         order.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
@@ -264,7 +264,7 @@ public class TicketBuyActivity extends AppCompatActivity implements View.OnClick
                 progressDialog.show();
                 BmobQuery<TicketOrder> query = new BmobQuery<TicketOrder>();
                 query.addWhereEqualTo("user_name", username1);
-                query.addWhereEqualTo("date", formatter.format(new Date()));
+                query.addWhereEqualTo("date", date.getText().toString());
                 query.setLimit(10);
                 query.findObjects(new FindListener<TicketOrder>() {
                     @Override

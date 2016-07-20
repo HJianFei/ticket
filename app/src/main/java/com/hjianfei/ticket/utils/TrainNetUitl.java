@@ -46,7 +46,7 @@ public class TrainNetUitl {
         params.put("dtype", "json");//返回数据的格式,xml或json，默认json
         params.put("from", start);//出发站,如：上海虹桥
         params.put("to", end);// 到达站,如：温州南
-        params.put("date", "");//出发日期，默认今日
+        params.put("date", date);//出发日期，默认今日
         params.put("tt", "");//车次类型，默认全部，如：G(高铁)、D(动车)、T(特快)、Z(直达)、K(快速)、Q(其他)
         new Thread(new Runnable() {
             @Override

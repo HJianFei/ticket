@@ -39,6 +39,7 @@ public class MyOrderActivity extends AppCompatActivity {
             if (msg.what == 1) {
                 progressDialog.dismiss();
                 ticketOrder = (TicketOrder) msg.obj;
+                System.out.println(ticketOrder.toString());
                 initView();
 
             }
@@ -128,9 +129,9 @@ public class MyOrderActivity extends AppCompatActivity {
         progressDialog.show();
         BmobQuery<TicketOrder> query = new BmobQuery<TicketOrder>();
         query.addWhereEqualTo("date", start);
-//                query.addWhereEqualTo("train_no", trains);
-//                query.addWhereEqualTo("real_name", names);
-//                query.addWhereEqualTo("date", order_id);
+//        query.addWhereEqualTo("train_no", trains);
+        query.addWhereEqualTo("user_name", names);
+//        query.addWhereEqualTo("date", order_id);
 
         query.setLimit(1);
         query.findObjects(new FindListener<TicketOrder>() {

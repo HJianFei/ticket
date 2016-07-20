@@ -225,7 +225,14 @@ public class TicketFragment extends Fragment implements View.OnClickListener, Da
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+        String date = "";
+        if (dayOfMonth < 10 && (monthOfYear + 1) < 10) {
+            date = year + "-0" + (monthOfYear + 1) + "-0" + dayOfMonth;
+        } else if ((monthOfYear + 1) < 10 && dayOfMonth >= 10) {
+            date = year + "-0" + (monthOfYear + 1) + "-" + dayOfMonth;
+        } else if ((monthOfYear + 1) >= 10 && dayOfMonth < 10) {
+            date = year + "-" + (monthOfYear + 1) + "-0" + dayOfMonth;
+        }
         start_date.setText(date);
     }
 }

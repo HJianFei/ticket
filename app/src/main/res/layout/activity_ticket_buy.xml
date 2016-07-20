@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:text="无"
                         android:textColor="@color/ticket_text"
-                        android:textSize="24sp"/>
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:id="@+id/train_num"

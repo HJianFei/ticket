@@ -148,6 +148,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="二代身份证"
+                            android:textColor="@color/ticket_text"
                             android:textSize="24sp"/>
                     </LinearLayout>
 

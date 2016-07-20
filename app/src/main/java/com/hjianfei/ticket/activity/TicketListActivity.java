@@ -24,8 +24,6 @@ import com.hjianfei.ticket.utils.TrainNetUitl;
 import com.yalantis.phoenix.PullToRefreshView;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class TicketListActivity extends AppCompatActivity {
@@ -38,7 +36,6 @@ public class TicketListActivity extends AppCompatActivity {
     private String start_state;
     private String jsonString;
     private Gson gson;
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     private List<Trains.ResultBean> trainLists;
     private PullToRefreshView mPullToRefreshView;
     private Handler mHandler = new Handler() {
@@ -57,6 +54,7 @@ public class TicketListActivity extends AppCompatActivity {
                 Bundle bundle1 = new Bundle();
                 bundle1.putSerializable("resultMoney", resultMoney);
                 bundle1.putSerializable("resultBean", resultBean);
+                bundle1.putString("date",date);
                 dialogFragment.setArguments(bundle1);
                 progressDialog.dismiss();
                 dialogFragment.show(getFragmentManager(), "dialog");
@@ -84,7 +82,7 @@ public class TicketListActivity extends AppCompatActivity {
         initDatas();
         setContentView(R.layout.activity_ticket_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(start_state + "->" + end_state);
+        toolbar.setTitle(start_state + "-->" + end_state);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -104,7 +102,7 @@ public class TicketListActivity extends AppCompatActivity {
 
     private void initView() {
         time_lv = (TextView) findViewById(R.id.time_lv);
-        time_lv.setText(formatter.format(new Date()));
+        time_lv.setText(date);
         lv_tickets = (ListView) findViewById(R.id.lv_ticket);
         mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
         mAdapter = new CommonAdapter<Trains.ResultBean>(this, trainLists, R.layout.item_ticket) {

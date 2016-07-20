@@ -113,6 +113,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 myUser.setReal_name(reg_real_name.getText().toString());
                 myUser.setUser_id_type(reg_cart.getText().toString());
                 myUser.setUser_id(reg_number.getText().toString());
+                myUser.setMobilePhoneNumber(reg_phone.getText().toString());
+                myUser.setEmail(reg_email.getText().toString());
                 myUser.signUp(new SaveListener<MyUser>() {
                     @Override
                     public void done(MyUser myUser, BmobException e) {
