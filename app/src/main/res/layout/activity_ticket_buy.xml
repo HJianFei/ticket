@@ -180,6 +180,7 @@
                         android:layout_marginLeft="10dp"
                         android:gravity="center_horizontal"
                         android:text=""
+                        android:textColor="@color/ticket_text"
                         android:textSize="24sp"/>
 
                 </LinearLayout>
@@ -202,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:gravity="center_horizontal"
-                        android:text="二等"
+                        android:text="二等:"
                         android:textSize="24sp"/>
 
                     <TextView
@@ -246,7 +247,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:gravity="center_horizontal"
-                        android:text="硬座"
+                        android:text="硬座:"
                         android:textSize="24sp"/>
 
                     <TextView
@@ -288,7 +289,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:gravity="center_horizontal"
-                        android:text="无座"
+                        android:text="无座:"
                         android:textSize="24sp"/>
 
                     <TextView

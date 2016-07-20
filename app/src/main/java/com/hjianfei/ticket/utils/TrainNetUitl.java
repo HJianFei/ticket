@@ -18,6 +18,8 @@ import java.util.Map;
 
 /**
  * Created by HJianFei on 2016-7-17.
+ *
+ * @description 实时余票查询
  */
 public class TrainNetUitl {
 

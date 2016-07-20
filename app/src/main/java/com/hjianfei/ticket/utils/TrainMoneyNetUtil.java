@@ -21,6 +21,8 @@ import java.util.Map;
 
 /**
  * Created by HJianFei on 2016-7-17.
+ *
+ * @description 车次票价查询
  */
 public class TrainMoneyNetUtil {
     private Handler mHandler;

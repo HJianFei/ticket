@@ -16,6 +16,7 @@ import com.labo.kaji.swipeawaydialog.SwipeAwayDialogFragment;
 
 /**
  * Created by HJianFei on 2016-7-17.
+ * 第三方控件 SwipeAwayDialogFragment
  */
 public class MyDialogFragment extends SwipeAwayDialogFragment {
     private Context mContext;

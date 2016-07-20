@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -56,7 +57,7 @@ public class PersionActivity extends AppCompatActivity {
     private void initData() {
         username = (String) SharedPreferencesUtils.getParam(PersionActivity.this, "username", "");
         progressDialog = new LovelyProgressDialog(PersionActivity.this);
-        progressDialog.setMessage("正在查询,请稍后。。。");
+        progressDialog.setTitle("正在查询,请稍后。。。");
         progressDialog.setTopColorRes(R.color.teal);
         progressDialog.setCancelable(true);
         progressDialog.show();
@@ -88,6 +89,16 @@ public class PersionActivity extends AppCompatActivity {
 
     private void initView() {
         setContentView(R.layout.activity_persion);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("个人信息");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         p_name = (TextView) findViewById(R.id.p_name);
         p_real = (TextView) findViewById(R.id.p_real);
         p_cart = (TextView) findViewById(R.id.p_cart);
@@ -105,7 +116,7 @@ public class PersionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 BmobUser.logOut();   //清除缓存用户对象
-                Intent intent = new Intent(PersionActivity.this, LoginActivity.class);
+                Intent intent = new Intent(PersionActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

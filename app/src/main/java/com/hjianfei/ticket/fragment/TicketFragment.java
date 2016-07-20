@@ -34,6 +34,9 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
+ * @ create By HJianFei
+ * @description 车票预定
  */
 public class TicketFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
